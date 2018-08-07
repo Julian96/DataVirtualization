@@ -96,29 +96,29 @@ Java und Maven werden als Installation auf dem Server benötigt, damit Wildlfy u
 #### Java
 Dafür verbinden Sie sich per Putty mit dem Server und melden Sie sich an. Sie sind im Home-Verzeichnis des Users, navigieren Sie in das Root-Verzeichnis des Servers mit:
 ```Shell
-cd ..
+$ cd ..
 ```
 Nun installieren Sie über den bereits vorhandenen Package-Manager yum die benötigte Java Version:
 
 Für Java 1.8
 ```Shell
-yum install java-1.8.0-openjdk-devel
+$ yum install java-1.8.0-openjdk-devel
 ```
 oder für Java 1.7
 ```Shell
-yum install java-1.7.0-openjdk-devel
+$ yum install java-1.7.0-openjdk-devel
 ```
 Um die Installation zu bestätigen, führen Sie den Befehl
 
 ```Shell
-/usr/sbin/alternatives --config java
+$ /usr/sbin/alternatives --config java
 ```
 ![JavaWahl](./Bilder/JavaWahl.png)
 
 und besätigen Sie ihre Auswahl. Liegt nur eine Java Installation vor, enthält die List nur einen Eintrag.
 Denselben Vorgang wiederholen Sie für den Befehl
 ```Shell
-/usr/sbin/alternatives --config javac
+$ /usr/sbin/alternatives --config javac
 ```
 #### Maven
 Um [Maven](http://maven.apache.org/download.cgi) zu installieren, downloaden Sie [Maven](http://maven.apache.org/download.cgi) auf ihren lokalen Rechner. Wählen Sie dabei den im bild gezeigten Download-Link unter ***Binary Zip archive***.
@@ -127,13 +127,13 @@ Um [Maven](http://maven.apache.org/download.cgi) zu installieren, downloaden Sie
 
 und transferieren Sie die Zip-Datei per FileZilla in das Home-Verzeichnis ihres Users (/home/user/apache-maven-3.5.4-bin). Navigieren Sie über Putty in diesem Ordner, entpacken Sie die Zip-Datei und löschen Sie diese anschließend.
 ```Shell
-cd home/user/
-unzip apache-maven-3.5.4-bin.zip
-rm apache-maven-3.5.4-bin.zip
+$ cd home/user/
+$ unzip apache-maven-3.5.4-bin.zip
+$ rm apache-maven-3.5.4-bin.zip
 ```
 Nun öffnen Sie ihr Bash_Profile mit dem Texteditor vim
 ```Shell
-vi ~/.bash_profile
+$ vi ~/.bash_profile
 ```
 und tragen Sie die Variablen
 ```Shell
@@ -148,11 +148,11 @@ ein. Beispielhaft:
 
 Beenden Sie den Editor, indem Sie ***ESC*** drücken und ***:wq!*** eingeben und mit ***Enter*** bestätigen. Damit die Änderung in Kraft tritt, führen Sie folgenden Befehl aus:
 ```Shell
-source ~/.bash_profile
+$ source ~/.bash_profile
 ```
 Um die Installation zu überprüfen, geben Sie
 ```Shell
-mvn --version
+$ mvn --version
 ```
 ein.
 ### Wildfly mit Teiid
@@ -163,8 +163,8 @@ ein.
 Verschieben Sie diese Datei ebenfalls mit FileZilla in den Home-Ordner ihres Users (/home/user/teiid-11.0.1-wildfly-server.zip) und entpacken bzw. löschen Sie anschließend den Zip-Ordner.
 
 ```Shell
-unzip teiid-11.0.1-wildfly-server.zip
-rm teiid-11.0.1-wildfly-server.zip
+$ unzip teiid-11.0.1-wildfly-server.zip
+$ rm teiid-11.0.1-wildfly-server.zip
 ```
 
 Fügen Sie in ihr Bash_Profile die Zeile
@@ -174,7 +174,7 @@ export JBOSS_HOME=/home/user/teiid-11.0.1
 ein. Benuten Sie eine andere Version, benennen Sie den Pfad dementsprechend. Geben Sie wieder
 
 ```Shell
-source ~/.bash_profile
+$ source ~/.bash_profile
 ```
 
 ein, um die Änderung aktiv werden zu lassen.
@@ -182,13 +182,13 @@ Wildfly mit Teiid ist nur erfolgreich auf Ihrem System.
 #### Freigabe von Ports
 Wildfly ermöglicht die Administration des Servers über eine Weboberfläche. Damit alle Funktionen von Wildfly verwendet werden können, müssen auf dem Server bestimmte Ports freigegeben werden. Führen Sie dafür die Befehle:
 ```Shell
-sudo firewall-cmd --add-port 8787/tcp
-sudo firewall-cmd --add-port 9990/tcp
-sudo firewall-cmd --add-port 31000/tcp
+$ sudo firewall-cmd --add-port 8787/tcp
+$ sudo firewall-cmd --add-port 9990/tcp
+$ sudo firewall-cmd --add-port 31000/tcp
 ```
 aus. Um die offenen Ports aufzulisten:
 ```Shell
-sudo firewall-cmd --list-ports
+$ sudo firewall-cmd --list-ports
 ```
 ***8787***
  Wird für Debugzwecke verwendet.
@@ -310,8 +310,110 @@ Es gibt zwei Arten von Usern:
 
 Hierfür wird das Skript ***add-user.sh*** verwendet, das früher bereits angesprochen wurde. Managementuser werden für alles verwendet, was mit der Serverkonfiguration zu tun hat und Applikationsuser für alles was mit Teiid und Datenmodellierung zusammenhängt. Wir werden im folgenden für beide Klassen einen User anlegen. Navigieren Sie dafür über die Shell in Putty zum Ordner der die ***add-user.sh*** beinhaltet ($TEIID_HOME/bin) und starten Sie das Skript:
 ```Shell
-sh add-user.sh
+$ sh add-user.sh
 ```
 ![addmanuser](./Bilder/addmanuser.png)
 
-Wählen Sie dort mit ***a*** einen Management User und geben Sie einen beliebigen Username und Password ein. Überspringen Sie mit Enter die Vergabe einer Gruppe und geben Sie anschließend ***no*** ein. Damit ist ein Managementuser erfolgreich angelegt. Zum anlegen eines Applikationsusers wählen Sie im ersten Schritt ***b*** und folgen Sie den Schritten.
+Wählen Sie dort mit ***a*** einen Management User und geben Sie einen beliebigen Username und Password ein. Überspringen Sie mit Enter die Vergabe einer Gruppe und geben Sie anschließend ***no*** ein. Damit ist ein Managementuser erfolgreich angelegt. Zum Anlegen eines Applikationsusers wählen Sie im ersten Schritt ***b*** und folgen Sie den weiteren Schritten. Wir werden im weiteren einen Applikationsuser mit dem Namen ***teiidUser*** verwenden.
+Tragen Sie nun die die Logindetails des Managementusers im Developer Studio ein. Damit kann mit einer laufenden Instanz des Applikationsservers verbunden werden. Wechseln Sie am unteren Rand auf ***Teiid Instance***.
+
+![teiidlogin](./Bilder/teiidlogin.png)
+
+Tragen Sie dort die Credentials des Applikationsusers ein. Klicken Sie auf ***Test Administation Connection*** und ***Test JDBC Connection***. Erscheint ein ***OK*** ist alles richtig konfiguriert. Nun muss der Server gestartet werden und wir können uns über das Developer Studio mit der laufenden Instanz verbinden.
+
+### Starten des Servers
+Um den Server zu starten gibt es zwei Möglichkeiten:
+- Über das Developerstudio
+- Über die Shell
+
+Es wird empfohlen die zweite Variante zu wählen. Hier haben wir die Möglichkeit die zu erreichende IP-Adresse anzugeben und den Prozess des Applikationsservers ggfs. in den Hintergrund zu packen, damit die bestehende SSH-Verbindung unterbrochen werden kann und der Server weiterläuft. Für ersteres muss ***Server lifecycle is externally managed*** abgewählt werden.
+#### Starten über das Developer Studio
+Um so den Server zu starten, wählen Sie den Server im Developer Studio aus und klicken Sie auf Start. Der Server ist nun gestartet und Sie sind direkt mit der laufenden Instanz verbunden. Schließen Sie nun das Developer Studio wird auch der Server heruntergefahren. Aus diesem Grund wird die Variante mit der Shell empfohlen.
+
+#### Starten über die Shell
+Hier wird beschrieben, wie der Server über die Shell gestartet werden kann. Dabei wird der Server einmal normal gestartet und einmal im Hintergrund.
+##### Im Vordergrund
+Verbinden Sie sich mit dem Server über Putty und navigieren Sie in den ($TEIID_HOME/bin)-Ordner. Dort liegt das Skript ***standalone.sh***, welches den Server startet. Beim starten geben wir dem Server jedoch weitere Einstellungen mit.
+```Shell
+$ sh standalone.sh -c standalone-teiid.xml -b 172.16.20.38 -bmanagement 172.16.20.38
+```
+Dies startet den Server mit der Konfigurationsdatei ***standalone-teiid.xml***. Wird diese Datei nicht angegeben, wird standardmäßig ***standalone.xml*** verwendet. Hiermit ist aber keine Teiid-Instanz möglich, welcher für die Datenvirtualisierung benötigt wird. ***-b*** und ***-bmanagement*** erhalten die IP-Adresse des Servers. Werden diese nicht angegeben, wird der Server auf localhost gestartet und wir erhalten von außerhalb keinen Zugriff auf den Applikationsserver. Um sich nun mit der laufenden Instanz zu verbinden, wählen Sie im Developer Studio den Server aus und klicken Sie start. Stellen Sie sich, dass ***Server lifecycle is externally managed*** angewählt ist. Schließen Sie nun ihren Putty-Session wird auch der Applikationsserver beendet. Deshalb kann der Server auch im Hintergrund gestartet werden.
+##### Im Hintergrund
+Um den Prozess von der Shell zu koppeln muss
+```Shell
+$ nohup sh standalone.sh -c standalone-teiid.xml -b 172.16.20.38 -bmanagement 172.16.20.38 &
+```
+eingegeben werden. Der bisherige Befehl wird um ***nohup*** am Anfang erweitert und hinten wird ein ***&*** angefügt. Nun kann die SSH-Session geschlossen werden und der Server läuft trotzdem weiter.
+#### Beenden über die Shell
+Je nachdem, wie der Applikationsserver gestartet wurde, muss er auch wieder beendet werden.
+##### Im Vordergrund
+Wurde der Applikationsserver im Vordergrund, also nicht im Hintergrund gestartet, kann er mit der Tastenkombination ***STRG+C*** beendet werden.
+##### Im Hintergrund
+Wurde der Prozess in der Hintergrund gelegt, werden ein Paar mehr Schritte benötigt, um den Server wieder zu beenden. Navigieren Sie dazu wieder in den ($TEIID_HOME/bin)-Ordner und starten Sie das Skript ***jboss-cli.sh***
+```Shell
+$ sh jboss-cli.sh
+```
+geben Sie nun
+```Shell
+ [disconnected /] connect --controller=172.16.20.38
+ ```
+mit ihrer entsprechenden IP-Adresse ein. Sie sind nun mit dem laufenden Prozess verbunden. Mit ***shutdown*** fahren Sie den Applikationsserver nun herunter.
+```Shell
+ [standalone@172.16.20.38:9990 /] shutdown
+ ```
+ Verlassen Sie die Ansicht mit ***STRG+C***.
+### Öffnen der Web Management Console
+Ist der Server gestartet, kann sich mit der Web Management Console verbunden werden. Diese läuft im Regelfall unter dem Port 9990. Sie erreichen diese, indem Sie in ihrem Browser die IP-Adresse ihres Server auf dem Port 9990 öffnen. In unserem Beispiel unter: http://172.16.20.38:9990.
+Melden Sie sich dort mit den Credentials des erstellten Managementusers an.
+## Verbinden mit einer Datenquelle
+Nun liegt ein gestarteter Server vor, mit dessen Instanz Sie über das Developer Studio verbunden sind. Im anschlißenden wird Ihnen gezeigt, wie Sie sich mit diversen Datenquellen verbinden können.
+### Oracle
+Zum verbinden mit einer Oracle-Datenbank liegt kein installiertes Modul vor. Aus diesem Grund müssen wir die JDBC treiben per Hand auf dem Server installieren. Hier kommt der bereits angesprochene ***modules*** Ordner ins Spiel. Dort werden die benötigten Treiber abgelegt. Wildfly setzt dafür eine genau definierte Ordnerstruktur vor. Öffnen Sie dafür im Developer Studio wieder das ***Remote Systems*** Fenster. Navigieren Sie in den Ordner ihrer Wildflyinstallation und öffnen Sie den ***modules***-Ordner. Erstellen Sie dort die Ordner oracle -> jdbc -> main.
+
+![ojdbc7](./Bilder/ojdbc7.png)
+
+ In diesen Ordner legen sie den JDBC-Treiber [odjbc7.jar](https://www.oracle.com/technetwork/database/features/jdbc/jdbc-drivers-12c-download-1958347.html) [(interner Link)](https://infocloud.infomotion.de/index.php/apps/files/?dir=/Teiid%20Dokumentation&fileid=4750825).
+ Zusätzlich wird eine ***module.xml***-Datei angelegt. Es ist wichtig, dass die Datei diesen Namen besitzt, da sie sonst nicht automatisch erkannt wird. Der Inhalt der Datei wird hier gezeigt:
+ ```xml
+ <?xml version="1.0" ?>
+
+<module xmlns="urn:jboss:module:1.1" name="oracle.jdbc">
+
+    <resources>
+        <resource-root path="ojdbc7.jar"/>
+    </resources>
+
+    <dependencies>
+        <module name="javax.api"/>
+        <module name="javax.transaction.api"/>
+    </dependencies>
+</module>
+ ```
+ Sie referenziert die verwendete JDBC-Datei sowie weitere bereits installierte Abhängigkeiten und erhält einen eindeutigen Namen ```oracle.jdbc```. Nun ist das Modul angelegt und muss in der ***standalone-teiid.xml*** ($TEIID_HOME/bin/configuration/) referenziert werden. Öffnen Sie dafür die Datei im Text-Editor und suchen sie die Treiber ```<drivers>```.
+
+ ![drivers](./Bilder/drivers.png)
+
+ Fügen Sie dort die Zeile
+ ```xml
+<driver name="OracleJDBCDriver" module="oracle.jdbc"/>
+ ```
+ ein. module referenziert das eben erstellte Modul und geben dem Treiber den Namen ```OracleJDBCDriver```. Unter diesem Namen ist nun der Treiber bekannt. Jetzt können wir uns mit einer Oracle-Datenbank verbinden. Dafür suchen wir ebenfalls in ***standalone-teiid.xml*** die ```<datasources>``` und fügen eine neue hinzu.
+
+![datasource](./Bilder/datasource.png)
+
+```xml
+<datasource jta="true" jndi-name="java:/OracleSchulungSNDev" pool-name="OracleSchulungSNDev" enabled="true" spy="true" use-ccm="true" statistics-enabled="true">
+	<connection-url>jdbc:oracle:thin:@srv-im-etl.intern.infomotion.de:1521/pdb01d</connection-url>
+  <driver-class>oracle.jdbc.OracleDriver</driver-class>
+  <driver>OracleJDBCDriver</driver>
+  <security>
+  	<user-name>dbs_dwh_cw</user-name>
+  	<password>dbs_dwh_cw</password>
+  </security>
+</datasource>
+```
+Diese Datasource verwendet den von uns angelegten Treiber ```OracleJDBCDriver```. Der ```jndi-name``` muss mit ***java:/*** beginnen. Dahinter kommt ein beliebiger Name, unter welchem unsere Datasource zu erreichen ist. Die ```connection-url``` beinhaltet die Adresse der Oracledatenbank, mit der sich verbunden werden will.
+### MongoDB
+### Hive
+### Excel
+### XML
