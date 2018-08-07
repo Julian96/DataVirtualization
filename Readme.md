@@ -217,27 +217,27 @@ Dies ist ein Port, der die Schnittstelle zu Teiid bildet. Ist dieser nicht offen
 In diesem Abschnitt gebe ich Ihnen einen kleinen Überblick über die vorhandene Ordnerstruktur und benenne die wesentlichen Dateien, die für die weitere Konfiguration des Wildfly-Servers von Bedeutung sein werden.
 Die relevanten Ordner sind ***bin***, ***modules*** und ***standalone***
 
-$ teiid-11.0.1
-.
-├── ***bin***
-│  &nbsp;&nbsp;&nbsp; ├── jboss-cli.sh
-│  &nbsp;&nbsp;&nbsp; ├── add-user.sh
-│	&nbsp;&nbsp;&nbsp;	├── standalone.sh
-│  &nbsp;&nbsp;&nbsp;	├── ...
-├── ***modules***
-│  &nbsp;&nbsp;&nbsp; └── system
-│  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 		├── layers
-│  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 				└── ...
-├── ***standalone***
-│  &nbsp;&nbsp;&nbsp; └── configuration
-│  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 		├── standalone-teiid.xml
-│  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 		├── application-users.properties
-│  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 		├── application-roles.properties
-│  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 		├── mgmt-users.properties
-│  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 		├── mgmt-groups.properties
-│  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 		└── ...
-│  &nbsp;&nbsp;&nbsp; ├── ...
-├── ...
+$ teiid-11.0.1  
+.  
+├── ***bin***  
+│  &nbsp;&nbsp;&nbsp; ├── jboss-cli.sh  
+│  &nbsp;&nbsp;&nbsp; ├── add-user.sh  
+│	&nbsp;&nbsp;&nbsp;	├── standalone.sh  
+│  &nbsp;&nbsp;&nbsp;	├── ...  
+├── ***modules***  
+│  &nbsp;&nbsp;&nbsp; └── system  
+│    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 	  	├── layers  
+│    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 	  			└── ...  
+├── ***standalone***  
+│  &nbsp;&nbsp;&nbsp; └── configuration  
+│    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 	  	├── standalone-teiid.xml  
+│    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   		├── application-users.properties  
+│    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   		├── application-roles.properties  
+│    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 	  	├── mgmt-users.properties  
+│    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 	  	├── mgmt-groups.properties  
+│    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 	  	└── ...  
+│  &nbsp;&nbsp;&nbsp; ├── ...  
+├── ...  
 
 Alle hier aufgelisteten Datein und Ordner sind von Relevanz und werden im folgenden näher erklärt.
 ##### bin
