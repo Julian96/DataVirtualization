@@ -24,6 +24,21 @@
 	- [Benutzung des Applikationsservers](#benutzung-des-applikationsservers)
 		- [Verbinden von JBoss Developer Studio mit dem Wildfly-Server](#verbinden-von-jboss-developer-studio-mit-dem-wildfly-server)
 		- [User anlegen](#user-anlegen)
+		- [Starten des Servers](#starten-des-servers)
+			- [Starten über das Developer Studio](#starten-über-das-developer-studio)
+			- [Starten über die Shell](#starten-über-die-shell)
+				- [Im Vordergrund](#im-vordergrund)
+				- [Im Hintergrund](#im-hintergrund)
+			- [Beenden über die Shell](#beenden-über-die-shell)
+				- [Im Vordergrund](#im-vordergrund)
+				- [Im Hintergrund](#im-hintergrund)
+		- [Öffnen der Web Management Console](#öffnen-der-web-management-console)
+	- [Verbinden mit einer Datenquelle](#verbinden-mit-einer-datenquelle)
+		- [Oracle](#oracle)
+		- [MongoDB](#mongodb)
+		- [Hive](#hive)
+		- [Excel](#excel)
+		- [XML](#xml)
 
 <!-- /TOC -->
 ## Einleitung
@@ -156,6 +171,8 @@ $ mvn --version
 ```
 ein.
 ### Wildfly mit Teiid
+[Externer Guide](https://docs.jboss.org/author/display/WFLY10/Getting+Started+Guide)
+[Externer Guide](https://access.redhat.com/documentation/en-us/red_hat_jboss_data_virtualization/6.3/html/installation_guide/ch04)
 [Hier](http://teiid.io/teiid_runtimes/teiid_wildfly/downloads/) [(interner Link)](https://infocloud.infomotion.de/index.php/apps/files/?dir=/Teiid%20Dokumentation&fileid=4750825) finden Sie eine Wildfly 11 Version mit bereits installierem Teiid 11.0.1. Downloaden Sie dafür die Zip-Datei unter dem Link (with Wildfly/Console)
 
 ![WildflyTeiid](./Bilder/WildflyTeiid.png)
@@ -253,6 +270,7 @@ und bestätigen Sie mit ***OK***.
 Wählen Sie nun ***Data Virtualization*** aus und klicken Sie auf ***Next***. Die benötigten Komponenten werden nun installiert. Das Developerstudio ist nun erfolgreich installiert.
 ## Benutzung des Applikationsservers
 ### Verbinden von JBoss Developer Studio mit dem Wildfly-Server
+[Externer Guide](https://tools.jboss.org/documentation/howto/configure_remote_server.html)
 Wir haben nun den Wildfly-Server auf unserem Server installiert und haben das Developer Studio lokal auf unserem Rechner. Nun verbinden wir das Developer Studio mit unserem Server. Öffnen Sie dafür die ***Remote System***-Ansicht. Diese ist in der Menüleiste unter Window -> Show View -> Other zu finden.
 
 ![remoteSystem](./Bilder/remoteSystem.png)
@@ -304,6 +322,7 @@ Doppelklicken Sie ihren Server, um das Fenster für die Servereinstellungen zu �
 
 Um sich nun mit dem Wildfly-Server verbinden zu können, muss ein Managementuser erstellt werden, dessen Credentials in ***User Name*** und ***Password*** eingetragen werden.
 ### User anlegen
+[Externer Guide](https://docs.jboss.org/author/display/WFLY8/add-user+utility)
 Es gibt zwei Arten von Usern:
 - Managementuser
 - Applikationsuser
@@ -322,6 +341,7 @@ Tragen Sie nun die die Logindetails des Managementusers im Developer Studio ein.
 Tragen Sie dort die Credentials des Applikationsusers ein. Klicken Sie auf ***Test Administation Connection*** und ***Test JDBC Connection***. Erscheint ein ***OK*** ist alles richtig konfiguriert. Nun muss der Server gestartet werden und wir können uns über das Developer Studio mit der laufenden Instanz verbinden.
 
 ### Starten des Servers
+[Externer Guide](http://blog.arungupta.me/bind-wildfly-different-ip-address-multihomed/)
 Um den Server zu starten gibt es zwei Möglichkeiten:
 - Über das Developerstudio
 - Über die Shell
@@ -368,6 +388,7 @@ Melden Sie sich dort mit den Credentials des erstellten Managementusers an.
 ## Verbinden mit einer Datenquelle
 Nun liegt ein gestarteter Server vor, mit dessen Instanz Sie über das Developer Studio verbunden sind. Im anschlißenden wird Ihnen gezeigt, wie Sie sich mit diversen Datenquellen verbinden können.
 ### Oracle
+[Externer Guide](http://www.adam-bien.com/roller/abien/entry/installing_oracle_jdbc_driver_on)
 Zum verbinden mit einer Oracle-Datenbank liegt kein installiertes Modul vor. Aus diesem Grund müssen wir die JDBC treiben per Hand auf dem Server installieren. Hier kommt der bereits angesprochene ***modules*** Ordner ins Spiel. Dort werden die benötigten Treiber abgelegt. Wildfly setzt dafür eine genau definierte Ordnerstruktur vor. Öffnen Sie dafür im Developer Studio wieder das ***Remote Systems*** Fenster. Navigieren Sie in den Ordner ihrer Wildflyinstallation und öffnen Sie den ***modules***-Ordner. Erstellen Sie dort die Ordner oracle -> jdbc -> main.
 
 ![ojdbc7](./Bilder/ojdbc7.png)
@@ -426,6 +447,10 @@ Erhalten Sie folgendes Fenster, ist die Datasource erfolgreich konfiguriert und 
 
 
 ### MongoDB
+[Externer Guide](http://www.mastertheboss.com/javaee/mongodb/3-ways-you-can-connect-to-mongodb-from-wildfly-jboss-eap)
 ### Hive
+[Externer Guide](https://developer.jboss.org/wiki/ConnectToAHadoopSourceUsingHive2)
 ### Excel
+[Externer Guide](https://developer.jboss.org/wiki/MicrosoftExcelDocumentIntoRelationalTable)
 ### XML
+[Externer Guide](https://docs.jboss.org/author/display/teiidexamples/Model+Remote+XML+File+Data+Source)
