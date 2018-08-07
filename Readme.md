@@ -412,7 +412,19 @@ Zum verbinden mit einer Oracle-Datenbank liegt kein installiertes Modul vor. Aus
   </security>
 </datasource>
 ```
-Diese Datasource verwendet den von uns angelegten Treiber ```OracleJDBCDriver```. Der ```jndi-name``` muss mit ***java:/*** beginnen. Dahinter kommt ein beliebiger Name, unter welchem unsere Datasource zu erreichen ist. Die ```connection-url``` beinhaltet die Adresse der Oracledatenbank, mit der sich verbunden werden will.
+Diese Datasource verwendet den von uns angelegten ```<driver>``` ```OracleJDBCDriver```. Der ```jndi-name``` muss mit ***java:/*** beginnen. Dahinter kommt ein beliebiger Name, unter welchem unsere Datasource zu erreichen ist. Die ```<connection-url>``` beinhaltet die Adresse der Oracledatenbank, mit der sich verbunden werden will, sowie unter ```<security>``` die Anmeldedaten der Datenbank. Damit diese Änderung aktiv ist, muss der Applikationsserver neu gestartet werden. Ist der Applikationsserver neu gestartet, öffnen Sie die Weboberfläche der Managementconsole und navigieren Sie zu Subsystems -> Datasources -> Non XA -> ***Ihre Datasource*** und klicken auf ***View***.
+
+![datasourceweb](./Bilder/datasourceweb.png)
+
+Wählen Sie nun den Reiter ***Connection*** und klicken Sie auf ***Test Connection***.
+
+![connectiontest](./Bilder/connectiontest.png)
+
+Erhalten Sie folgendes Fenster, ist die Datasource erfolgreich konfiguriert und die Daten der Datenbank stehen zur weiteren Verarbeitung zur Verfügung.
+
+![connectionsuccess](./Bilder/connectionsuccess.png)
+
+
 ### MongoDB
 ### Hive
 ### Excel
