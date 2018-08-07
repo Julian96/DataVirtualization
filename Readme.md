@@ -1,5 +1,16 @@
 # Dokumentation Teiid Daten Virtualisierung
-___
+## Inhaltsverzeichnis
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+
+- [Dokumentation Teiid Daten Virtualisierung](#dokumentation-teiid-daten-virtualisierung)
+	- [Inhaltsverzeichnis](#inhaltsverzeichnis)
+	- [Einleitung](#einleitung)
+		- [Verwendete Technologien](#verwendete-technologien)
+		- [Grundlagen](#grundlagen)
+		- [Kompatibilität](#kompatibilität)
+	- [Server aufstezen](#server-aufstezen)
+
+<!-- /TOC -->
 ## Einleitung
 In dieser Dokumentation wird die Installation der Teiid Daten Virtualisierung beschrieben, sowie das Aufsetzen des Servers und das Verbinden mit diversen Datenquellen. Zudem werden generelle Grundlagen der Verwendung des Wildfly Servers und Verwendung der JBoss Developer Studio Oberfläche geklärt. Der Ordner mit benötigten Dateien ist [hier](https://infocloud.infomotion.de/index.php/apps/files/?dir=/Teiid%20Dokumentation&fileid=4750825) zu finden.
 ### Verwendete Technologien
@@ -38,7 +49,8 @@ Ein bestehendes Problem sind die vielen zu Verfügung stehenden Versionen von Te
 | 11      | 10.2.1 | -              | 1.8  |
 | 9       | 9.3.7  | 11.1.2         | 1.7  |
 
-Also ergeben sich zwei Möglichkeiten. Entweder es wird Wildfly 9 mit Teiid 9.3.7 und dem Teiid Designer 11.1.2 verwendet. Dies ist eine etwas veraltete Variante, jedoch funktioniert der Teiid Designer vollständig. Oder es wird Wildfly 11 mit Teiid 10.2.1 und ebenfalls dem Teiid Designer 11.1.2, jedoch können hier Probleme mit der Oberfläche im Teiid Designer entstehen und es muss für bestimmte Tasks ggfs. auf die Command-Line gewechselt werden.
+Also ergeben sich zwei Möglichkeiten. Entweder es wird Wildfly 9 mit Teiid 9.3.7 und dem Teiid Designer 11.1.2 verwendet. Dies ist eine etwas veraltete Variante, jedoch funktioniert der Teiid Designer vollständig. Oder es wird Wildfly 11 mit Teiid 10.2.1 und ebenfalls dem Teiid Designer 11.1.2, jedoch können hier Probleme mit der Oberfläche im Teiid Designer entstehen und es muss für bestimmte Tasks ggfs. auf die Command-Line gewechselt werden. Die Java Version ist bedingt durch die verwendeten Komponenten und wird bei der späteren Installation eine Rolle spielen.
 
 ***Im Folgenden wird Wildfly 11 mit Teiid 10.2.1 und der Teiid Designer 11.1.2 verwendet ***
+
 ## Server aufstezen
